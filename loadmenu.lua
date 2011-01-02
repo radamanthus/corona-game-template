@@ -13,8 +13,8 @@ function new()
 	local loadingImage
 	
 	local showLoadingScreen = function()
-		loadingImage = display.newImageRect( "images/splashScreen.png", 480, 346 )
-		loadingImage.x = 240; loadingImage.y = 173
+		loadingImage = display.newImageRect( "images/splashScreen.png", 480, 320 )
+		loadingImage.x = 240; loadingImage.y = 160
 		localGroup:insert(loadingImage)
 		
 		local goToLevel = function()
