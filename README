@@ -1,4 +1,4 @@
-Corona Game Template
+Corona Game Template version 1.0
 (c) 2011 by Radamanthus Batnag
 
 This is a template project for building games using Ansca Mobile's Corona SDK (http://www.anscamobile.com/corona/)
@@ -25,3 +25,5 @@ CREDITS
 The code incorporates the Director class and some scene changing code from the Ghosts vs. Monsters project by Beebe Games (http://blog.anscamobile.com/2010/12/ghosts-vs-monsters-open-source-game-in-corona-sdk/)
 
 The original Director class was written by Ricardo Bauber (http://developer.anscamobile.com/code/director-class-10)
+
+This code is MIT licensed, see http://developer.anscamobile.com/code/license
