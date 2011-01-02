@@ -13,7 +13,8 @@ Out of the box, this is a working Corona project. It includes a splash screen (l
 The images for the buttons are loaded from images/buttons. Note the naming convetion: play.png is the button for Play, settings.png for Settings, etc.
 
 The project includes a Ruby script, generate.rb, for automatically generating your own menu code from the menu.json file.
-To be able to run generate.rb, you need Ruby 1.9.2 or MacRuby with the JSON gem installed.
+This script requires Ruby 1.9.2 or MacRuby with the JSON gem installed.
+
 To run generate.rb, just invoke it from a Terminal while in the project's root directory:
 ruby generate.rb (for Ruby 1.9.2), or
 macruby generate.rb (for MacRuby)
