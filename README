@@ -18,6 +18,15 @@ To run generate.rb, just invoke it from a Terminal while in the project's root d
 ruby generate.rb (for Ruby 1.9.2), or
 macruby generate.rb (for MacRuby)
 
+generate.rb will write the generated button code to menu.lua. It will be written between these two markup lines:
+	-- Menu Buttons - Start
+	-- Menu Buttons - End
+Make sure there is nothing between those two lines before you run generate.rb
+
+generate.rb will also generate screen code - one file for each entry in menu.json. For example, for the supplied menu.json file, four .lua files will be generated: about.lua, help.lua, play.lua and settings.lua.
+
+Be careful when running generate.rb! It will overwrite any existing target files and you might lose some of your code.
+
 You don't need to include generate.rb and menu.json when you deploy your Corona project.
 
 CREDITS
