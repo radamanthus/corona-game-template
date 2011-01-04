@@ -59,13 +59,19 @@ menu_lua_file = File.open('menu.lua', 'r+')
 menu_lua_file_lines = menu_lua_file.readlines
 menu_lua_file.close
 menu_lua_file = File.open('menu.lua', 'w+')
+inside_menu_section = false
 menu_lua_file_lines.each do |line|
-  menu_lua_file.print line
+  menu_lua_file.print line unless inside_menu_section
   if line.include?("-- Menu Buttons - Start") # Look for the start markup
+    inside_menu_section = true
     menu.each do |menu_item|
       menu_lua_file.print generate_menu_code_for menu_item
     end
   end    
+  if line.include?("-- Menu Buttons - End")  
+    menu_lua_file.print line
+    inside_menu_section = false 
+  end
 end
 menu_lua_file.close
 
