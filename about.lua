@@ -5,7 +5,7 @@ function new()
 	local localGroup = display.newGroup()
 	
 	-- Background
-	local background = display.newImage("images/backgrounds/default.png")
+	local background = display.newImage("images/bk-default.png")
 	localGroup:insert(background)
 	
 	-- Title
