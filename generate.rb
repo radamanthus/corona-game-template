@@ -1,16 +1,23 @@
 require 'json'
 
 MENU_CODE = %{
-  local #<name>Button = display.newImage("images/buttons/#<name>.png")
-  local function #<name>Pressed ( event )
-  	if event.phase == "ended" then
-  		#<change_scene_code>
-  	end
-  end
-  #<name>Button:addEventListener("touch", #<name>Pressed)
-  #<name>Button.x = #<x>
-  #<name>Button.y = #<y>
-  localGroup:insert(#<name>Button)        
+  local #<name>Button = ui.newButton{
+		defaultSrc = "images/btn-#<name>.png",
+		defaultX = #<width>,
+		defaultY = #<height>,		
+		overSrc = "images/btn-#<name>-over.png",
+		overX = #<width>,
+		overY = #<height>,		
+		onEvent = on#<name>Touch,
+		id = "#<name>Button",
+		text = "",
+		font = "Helvetica",
+		textColor = { 255, 255, 255, 255 },
+		emboss = false
+	}
+	#<name>Button.x = #<x>
+	#<name>Button.y = #<y>
+	localGroup:insert(#<name>Button)
   
 }
 
@@ -33,6 +40,8 @@ def generate_menu_code_for(menu_item)
   menu_code.gsub!('#<name>', menu_item['name'])
   menu_code.gsub!('#<x>', menu_item['x'].to_s)
   menu_code.gsub!('#<y>', menu_item['y'].to_s)
+  menu_code.gsub!('#<width>', menu_item['width'].to_s)
+  menu_code.gsub!('#<height>', menu_item['height'].to_s)
   menu_code.gsub!('#<change_scene_code>', change_scene_code)  
   menu_code
 end
@@ -83,7 +92,7 @@ function new()
 	local localGroup = display.newGroup()
 	
 	-- Background
-	local background = display.newImage("images/backgrounds/default.png")
+	local background = display.newImage("images/bk-default.png")
 	localGroup:insert(background)
 	
 	-- Title

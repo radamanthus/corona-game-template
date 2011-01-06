@@ -3,24 +3,32 @@
     "name":"play",
     "x":160,
     "y":80,
+    "width":160,
+    "height":32,
     "transition":["fade", 30, 60, 90]
   },
   {
     "name":"settings",
     "x":160,
     "y":130,
+    "width":160,
+    "height":32,    
     "transition":["fade", "green"]
   },
   {
     "name":"help",
     "x":160,
     "y":180,
+    "width":160,
+    "height":32,    
     "transition":["overFromTop"]
   },
   {
     "name":"about",
     "x":160,
     "y":230,
+    "width":160,
+    "height":32,    
     "transition":["moveFromLeft"]
   }
 ]
