@@ -1,14 +1,20 @@
 require 'json'
 
 MENU_CODE = %{
-  local #<name>Button = ui.newButton{
+  local #<name>Button = nil
+  local function #<eventName> ( event )
+    if event.phase == "release" and #<name>Button.isActive then
+      #<change_scene_code>
+    end
+  end	
+  #<name>Button = ui.newButton{
 		defaultSrc = "images/btn-#<name>.png",
 		defaultX = #<width>,
 		defaultY = #<height>,		
 		overSrc = "images/btn-#<name>-over.png",
 		overX = #<width>,
 		overY = #<height>,		
-		onEvent = on#<name>Touch,
+		onEvent = #<eventName>,
 		id = "#<name>Button",
 		text = "",
 		font = "Helvetica",
@@ -17,6 +23,7 @@ MENU_CODE = %{
 	}
 	#<name>Button.x = #<x>
 	#<name>Button.y = #<y>
+	#<name>Button.isActive = true
 	localGroup:insert(#<name>Button)
   
 }
@@ -38,6 +45,7 @@ def generate_menu_code_for(menu_item)
   end
   menu_code = MENU_CODE.clone
   menu_code.gsub!('#<name>', menu_item['name'])
+  menu_code.gsub!('#<eventName>', "on#{menu_item['name'].capitalize}")
   menu_code.gsub!('#<x>', menu_item['x'].to_s)
   menu_code.gsub!('#<y>', menu_item['y'].to_s)
   menu_code.gsub!('#<width>', menu_item['width'].to_s)

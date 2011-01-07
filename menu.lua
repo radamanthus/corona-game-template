@@ -12,14 +12,20 @@ function new()
 	
 	-- Menu Buttons - Start
 
-  local playButton = ui.newButton{
+  local playButton = nil
+  local function onPlay ( event )
+    if event.phase == "release" and playButton.isActive then
+      director:changeScene("play", "fade", 30.0,60.0,90.0)
+    end
+  end	
+  playButton = ui.newButton{
 		defaultSrc = "images/btn-play.png",
 		defaultX = 160,
 		defaultY = 32,		
 		overSrc = "images/btn-play-over.png",
 		overX = 160,
 		overY = 32,		
-		onEvent = onplayTouch,
+		onEvent = onPlay,
 		id = "playButton",
 		text = "",
 		font = "Helvetica",
@@ -28,17 +34,24 @@ function new()
 	}
 	playButton.x = 160
 	playButton.y = 80
+	playButton.isActive = true
 	localGroup:insert(playButton)
   
 
-  local settingsButton = ui.newButton{
+  local settingsButton = nil
+  local function onSettings ( event )
+    if event.phase == "release" and settingsButton.isActive then
+      director:changeScene("settings", "fade", "green")
+    end
+  end	
+  settingsButton = ui.newButton{
 		defaultSrc = "images/btn-settings.png",
 		defaultX = 160,
 		defaultY = 32,		
 		overSrc = "images/btn-settings-over.png",
 		overX = 160,
 		overY = 32,		
-		onEvent = onsettingsTouch,
+		onEvent = onSettings,
 		id = "settingsButton",
 		text = "",
 		font = "Helvetica",
@@ -47,17 +60,24 @@ function new()
 	}
 	settingsButton.x = 160
 	settingsButton.y = 130
+	settingsButton.isActive = true
 	localGroup:insert(settingsButton)
   
 
-  local helpButton = ui.newButton{
+  local helpButton = nil
+  local function onHelp ( event )
+    if event.phase == "release" and helpButton.isActive then
+      director:changeScene("help", "overFromTop")
+    end
+  end	
+  helpButton = ui.newButton{
 		defaultSrc = "images/btn-help.png",
 		defaultX = 160,
 		defaultY = 32,		
 		overSrc = "images/btn-help-over.png",
 		overX = 160,
 		overY = 32,		
-		onEvent = onhelpTouch,
+		onEvent = onHelp,
 		id = "helpButton",
 		text = "",
 		font = "Helvetica",
@@ -66,17 +86,24 @@ function new()
 	}
 	helpButton.x = 160
 	helpButton.y = 180
+	helpButton.isActive = true
 	localGroup:insert(helpButton)
   
 
-  local aboutButton = ui.newButton{
+  local aboutButton = nil
+  local function onAbout ( event )
+    if event.phase == "release" and aboutButton.isActive then
+      director:changeScene("about", "moveFromLeft")
+    end
+  end	
+  aboutButton = ui.newButton{
 		defaultSrc = "images/btn-about.png",
 		defaultX = 160,
 		defaultY = 32,		
 		overSrc = "images/btn-about-over.png",
 		overX = 160,
 		overY = 32,		
-		onEvent = onaboutTouch,
+		onEvent = onAbout,
 		id = "aboutButton",
 		text = "",
 		font = "Helvetica",
@@ -85,6 +112,7 @@ function new()
 	}
 	aboutButton.x = 160
 	aboutButton.y = 230
+	aboutButton.isActive = true
 	localGroup:insert(aboutButton)
   
 	-- Menu Buttons - End
