@@ -9,7 +9,6 @@ function new()
 	background.x = display.contentCenterX
 	background.y = display.contentCenterY
 	localGroup:insert(background)
-
 	
 	-- Title
 	local title = display.newText("Touch to go back", 0, 0, native.systemFontBold, 16)
@@ -21,7 +20,7 @@ function new()
 	
 	-- Touch to go back
 	local function touched ( event )
-		if event.phase == "ended" then
+		if ("ended" == event.phase) then
 			director:changeScene("menu","fade")
 		end
 	end

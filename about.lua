@@ -20,12 +20,12 @@ function new()
 	
 	-- Touch to go back
 	local function touched ( event )
-		if event.phase == "ended" then
+		if ("ended" == event.phase) then
 			director:changeScene("menu","fade")
 		end
 	end
-	background:addEventListener("touch",touched)
-	
+	background:addEventListener("touch",touched)	
+		
 	unloadMe = function()
 	end	
 	

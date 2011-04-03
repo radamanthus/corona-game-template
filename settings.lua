@@ -20,7 +20,7 @@ function new()
 	
 	-- Touch to go back
 	local function touched ( event )
-		if event.phase == "ended" then
+		if ("ended" == event.phase) then
 			director:changeScene("menu","fade")
 		end
 	end
