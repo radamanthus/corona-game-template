@@ -5,14 +5,15 @@ function new()
 	local localGroup = display.newGroup()
 	
 	-- Background
-	local background = display.newImage("images/bk-default.png")
-	localGroup:insert(background)
+	local background = display.newImageRect("images/bk-default.png", 480, 320)
+	background.x = display.contentCenterX
+	background.y = display.contentCenterY
 	
 	-- Title
 	local title = display.newText("Touch to go back", 0, 0, native.systemFontBold, 16)
 	title:setTextColor( 255,255,255)
-	title.x = 160
-	title.y = 240
+	title.x = display.contentCenterX
+	title.y = display.contentCenterY
 	title.name = "title"
 	localGroup:insert(title)
 	
