@@ -14,13 +14,15 @@ function new()
 	
 	local showLoadingScreen = function()
 		loadingImage = display.newImageRect( "images/splashScreen.png", 480, 320 )
-		loadingImage.x = 240; loadingImage.y = 160
+		loadingImage.x = display.contentWidth
+		loadingImage.y = display.contentHeight
 		localGroup:insert(loadingImage)
 		
 		local goToLevel = function()
 			director:changeScene( "menu" )
 		end
 		
+		math.randomseed( os.time() )		
 		theTimer = timer.performWithDelay( 1000, goToLevel, 1 )
 	end
 	
