@@ -204,11 +204,11 @@ end
 local function cleanGroups ( objectOrGroup )
     if(not isDisplayObject(objectOrGroup)) then return end
     if objectOrGroup.numChildren then
-		-- we have a group, so first clean that out
-		while objectOrGroup.numChildren > 0 do
-			-- clean out the last member of the group (work from the top down!)
-			cleanGroups ( objectOrGroup[objectOrGroup.numChildren])
-		end
+      -- we have a group, so first clean that out
+      while objectOrGroup.numChildren > 0 do
+        -- clean out the last member of the group (work from the top down!)
+        cleanGroups ( objectOrGroup[objectOrGroup.numChildren])
+      end
     end
     
     -- we have either an empty group or a normal display object - remove it
@@ -624,3 +624,4 @@ function director:changeScene(nextLoadScene,
 	return true
 	
 end
+
