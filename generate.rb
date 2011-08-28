@@ -8,10 +8,10 @@ MENU_CODE = %{
     end
   end	
   #<name>Button = ui.newButton{
-		defaultSrc = "images/btn-#<name>.png",
+		defaultSrc = "btn-#<name>.png",
 		defaultX = #<width>,
 		defaultY = #<height>,		
-		overSrc = "images/btn-#<name>-over.png",
+		overSrc = "btn-#<name>-over.png",
 		overX = #<width>,
 		overY = #<height>,		
 		onEvent = #<eventName>,
@@ -100,7 +100,7 @@ function new()
 	local localGroup = display.newGroup()
 	
 	-- Background
-	local background = display.newImageRect("images/bk-default.png", 480, 320)
+	local background = display.newImageRect("bk-default.png", 480, 320)
 	background.x = display.contentCenterX
 	background.y = display.contentCenterY
 	localGroup:insert(background)
