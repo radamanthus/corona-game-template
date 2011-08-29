@@ -7,7 +7,7 @@ function new()
 	local localGroup = display.newGroup()
 	
 	-- Background
-	local background = display.newImageRect("bk-default.png", 480, 320)
+	local background = display.newImageRect("bk_default.png", 480, 320)
 	background.x = display.contentCenterX
 	background.y = display.contentCenterY
 	localGroup:insert(background)
@@ -21,10 +21,10 @@ function new()
     end
   end	
   playButton = ui.newButton{
-		defaultSrc = "btn-play.png",
+		defaultSrc = "btn_play.png",
 		defaultX = 160,
 		defaultY = 32,		
-		overSrc = "btn-play-over.png",
+		overSrc = "btn_play_over.png",
 		overX = 160,
 		overY = 32,		
 		onEvent = onPlay,
@@ -47,10 +47,10 @@ function new()
     end
   end	
   settingsButton = ui.newButton{
-		defaultSrc = "btn-settings.png",
+		defaultSrc = "btn_settings.png",
 		defaultX = 160,
 		defaultY = 32,		
-		overSrc = "btn-settings-over.png",
+		overSrc = "btn_settings_over.png",
 		overX = 160,
 		overY = 32,		
 		onEvent = onSettings,
@@ -73,10 +73,10 @@ function new()
     end
   end	
   helpButton = ui.newButton{
-		defaultSrc = "btn-help.png",
+		defaultSrc = "btn_help.png",
 		defaultX = 160,
 		defaultY = 32,		
-		overSrc = "btn-help-over.png",
+		overSrc = "btn_help_over.png",
 		overX = 160,
 		overY = 32,		
 		onEvent = onHelp,
@@ -99,10 +99,10 @@ function new()
     end
   end	
   aboutButton = ui.newButton{
-		defaultSrc = "btn-about.png",
+		defaultSrc = "btn_about.png",
 		defaultX = 160,
 		defaultY = 32,		
-		overSrc = "btn-about-over.png",
+		overSrc = "btn_about_over.png",
 		overX = 160,
 		overY = 32,		
 		onEvent = onAbout,
