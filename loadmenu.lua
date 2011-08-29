@@ -1,9 +1,6 @@
--- 
--- adapted from Ghosts Vs Monsters sample project 
--- (see http://blog.anscamobile.com/2010/12/ghosts-vs-monsters-open-source-game-in-corona-sdk/)
--- 
-
 module(..., package.seeall)
+
+require "init_buttons"
 
 -- Main function - MUST return a display.newGroup()
 function new()

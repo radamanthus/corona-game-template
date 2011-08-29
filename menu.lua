@@ -1,5 +1,7 @@
 module(..., package.seeall)
 
+local radlib = require "radlib"
+
 -- Main function - MUST return a display.newGroup()
 function new()
 	local ui = require("ui")
@@ -15,25 +17,17 @@ function new()
 	-- Menu Buttons - Start
 
   local playButton = nil
-  local function onPlay ( event )
-    if event.phase == "release" and playButton.isActive then
+  local function onPlayPressed ( event )
+    if event.phase == "ended" and playButton.isActive then
       director:changeScene("play", "fade", 30.0,60.0,90.0)
     end
   end	
-  playButton = ui.newButton{
-		defaultSrc = "btn_play.png",
-		defaultX = 160,
-		defaultY = 32,		
-		overSrc = "btn_play_over.png",
-		overX = 160,
-		overY = 32,		
-		onEvent = onPlay,
-		id = "playButton",
-		text = "",
-		font = "Helvetica",
-		textColor = { 255, 255, 255, 255 },
-		emboss = false
-	}
+  playButton = ui.newButton(
+    radlib.tableMerge(
+      _G.buttons['play'],
+      { onRelease = onPlayPressed }
+    )
+  )
 	playButton.x = 160
 	playButton.y = 80
 	playButton.isActive = true
@@ -41,25 +35,17 @@ function new()
   
 
   local settingsButton = nil
-  local function onSettings ( event )
-    if event.phase == "release" and settingsButton.isActive then
+  local function onSettingsPressed ( event )
+    if event.phase == "ended" and settingsButton.isActive then
       director:changeScene("settings", "fade", "green")
     end
   end	
-  settingsButton = ui.newButton{
-		defaultSrc = "btn_settings.png",
-		defaultX = 160,
-		defaultY = 32,		
-		overSrc = "btn_settings_over.png",
-		overX = 160,
-		overY = 32,		
-		onEvent = onSettings,
-		id = "settingsButton",
-		text = "",
-		font = "Helvetica",
-		textColor = { 255, 255, 255, 255 },
-		emboss = false
-	}
+  settingsButton = ui.newButton(
+    radlib.tableMerge(
+      _G.buttons['settings'],
+      { onRelease = onSettingsPressed }
+    )
+  )
 	settingsButton.x = 160
 	settingsButton.y = 130
 	settingsButton.isActive = true
@@ -67,25 +53,17 @@ function new()
   
 
   local helpButton = nil
-  local function onHelp ( event )
-    if event.phase == "release" and helpButton.isActive then
+  local function onHelpPressed ( event )
+    if event.phase == "ended" and helpButton.isActive then
       director:changeScene("help", "overFromTop")
     end
   end	
-  helpButton = ui.newButton{
-		defaultSrc = "btn_help.png",
-		defaultX = 160,
-		defaultY = 32,		
-		overSrc = "btn_help_over.png",
-		overX = 160,
-		overY = 32,		
-		onEvent = onHelp,
-		id = "helpButton",
-		text = "",
-		font = "Helvetica",
-		textColor = { 255, 255, 255, 255 },
-		emboss = false
-	}
+  helpButton = ui.newButton(
+    radlib.tableMerge(
+      _G.buttons['help'],
+      { onRelease = onHelpPressed }
+    )
+  )
 	helpButton.x = 160
 	helpButton.y = 180
 	helpButton.isActive = true
@@ -93,25 +71,17 @@ function new()
   
 
   local aboutButton = nil
-  local function onAbout ( event )
-    if event.phase == "release" and aboutButton.isActive then
+  local function onAboutPressed ( event )
+    if event.phase == "ended" and aboutButton.isActive then
       director:changeScene("about", "moveFromLeft")
     end
   end	
-  aboutButton = ui.newButton{
-		defaultSrc = "btn_about.png",
-		defaultX = 160,
-		defaultY = 32,		
-		overSrc = "btn_about_over.png",
-		overX = 160,
-		overY = 32,		
-		onEvent = onAbout,
-		id = "aboutButton",
-		text = "",
-		font = "Helvetica",
-		textColor = { 255, 255, 255, 255 },
-		emboss = false
-	}
+  aboutButton = ui.newButton(
+    radlib.tableMerge(
+      _G.buttons['about'],
+      { onRelease = onAboutPressed }
+    )
+  )
 	aboutButton.x = 160
 	aboutButton.y = 230
 	aboutButton.isActive = true
