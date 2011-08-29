@@ -7,7 +7,9 @@ function new()
 	local localGroup = display.newGroup()
 	
 	-- Background
-	local background = display.newImage("bk-default.png")
+	local background = display.newImageRect("bk-default.png", 480, 320)
+	background.x = display.contentCenterX
+	background.y = display.contentCenterY
 	localGroup:insert(background)
 	
 	-- Menu Buttons - Start
