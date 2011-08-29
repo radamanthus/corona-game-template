@@ -23,7 +23,7 @@ function new()
     end
   end	
   playButton = ui.newButton(
-    radlib.tableMerge(
+    radlib.table.merge(
       _G.buttons['play'],
       { onRelease = onPlayPressed }
     )
@@ -41,7 +41,7 @@ function new()
     end
   end	
   settingsButton = ui.newButton(
-    radlib.tableMerge(
+    radlib.table.merge(
       _G.buttons['settings'],
       { onRelease = onSettingsPressed }
     )
@@ -59,7 +59,7 @@ function new()
     end
   end	
   helpButton = ui.newButton(
-    radlib.tableMerge(
+    radlib.table.merge(
       _G.buttons['help'],
       { onRelease = onHelpPressed }
     )
@@ -77,7 +77,7 @@ function new()
     end
   end	
   aboutButton = ui.newButton(
-    radlib.tableMerge(
+    radlib.table.merge(
       _G.buttons['about'],
       { onRelease = onAboutPressed }
     )
