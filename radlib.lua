@@ -2,6 +2,8 @@
 
 module(..., package.seeall)
 
+local json = require "json"
+
 function io.parseJson( filename )
   local file = io.open( filename, "r" )
   if file then
