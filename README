@@ -12,28 +12,21 @@ Out of the box, this is a working Corona project. It includes a splash screen (l
 
 The images for the buttons are loaded from images/buttons. Note the naming convetion: play.png is the button for Play, settings.png for Settings, etc.
 
-The project includes a Ruby script, generate.rb, for automatically generating your own menu code from the menu.json file.
-This script requires Ruby 1.9.2 or MacRuby with the JSON gem installed.
+The code follows my personal convention for project subdirectories:
 
-To run generate.rb, just invoke it from a Terminal while in the project's root directory:
-ruby generate.rb (for Ruby 1.9.2), or
-macruby generate.rb (for MacRuby)
+appname
+  +-- assets
+  +-- appname
+  +-- doc
 
-generate.rb will write the generated button code to menu.lua. It will be written between these two markup lines:
-	-- Menu Buttons - Start
-	-- Menu Buttons - End
-Make sure there is nothing between those two lines before you run generate.rb
-
-generate.rb will also generate screen code - one file for each entry in menu.json. For example, for the supplied menu.json file, four .lua files will be generated: about.lua, help.lua, play.lua and settings.lua.
-
-Be careful when running generate.rb! It will overwrite any existing target files and you might lose some of your code.
-
-You don't need to include generate.rb and menu.json when you deploy your Corona project.
+- All code are in appname/appname. 
+- Game assets (e.g. Illustrator .ai files) are in appname/assets, then finished PNGs are of course copied over to appname/appname because that's where Corona SDK expects them to be.
+- The game design document (yes you should have one) and all other documentation are in appname/doc
 
 CREDITS
 
-The code incorporates the Director class and some scene changing code from the Ghosts vs. Monsters project by Beebe Games (http://blog.anscamobile.com/2010/12/ghosts-vs-monsters-open-source-game-in-corona-sdk/)
+The code incorporates the latest version of Director class. Director class was written by Ricardo Rauber (http://developer.anscamobile.com/code/director-class-10)
 
-The original Director class was written by Ricardo Rauber (http://developer.anscamobile.com/code/director-class-10)
+The code also includes some code adopted from the Ghosts vs. Monsters project by Beebe Games (http://blog.anscamobile.com/2010/12/ghosts-vs-monsters-open-source-game-in-corona-sdk/)
 
 This code is MIT licensed, see http://developer.anscamobile.com/code/license

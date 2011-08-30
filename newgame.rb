@@ -10,21 +10,33 @@ require 'fileutils'
 
 def generate_new_app(appname)
   app_dir = "../#{appname}"
-  # create the app directory
-  FileUtils.mkdir_p(app_dir)
+  code_dir = "#{app_dir}/#{appname}"
+  assets_dir = "#{app_dir}/assets"
+  doc_dir = "#{app_dir}/doc"
+
+  # create the app directories
+  FileUtils.mkdir_p app_dir
+  FileUtils.mkdir_p code_dir
+  FileUtils.mkdir_p assets_dir
+  FileUtils.mkdir_p doc_dir
   
-  # copy the files to the target directory
-  FileUtils.cp_r './.', app_dir
-  
-  # remove the git directory from the target directory
-  FileUtils.rm_r "#{app_dir}/.git"
+  # copy the files to the app code directory
+  FileUtils.cp_r './.', code_dir
+
+  # copy README
+  FileUtils.cp_r 'README', app_dir
+
+  # Remove support files used only for corona-game-template development
+  FileUtils.rm_r "#{code_dir}/.git"
+  FileUtils.rm_r "#{code_dir}/README"
+  FileUtils.rm "#{code_dir}/newgame.rb"
 end
 
 def show_help
   print %{
     Creates a new game at the parent directory.
     Usage:
-      macruby newgame <appname>
+      macruby newgame.rb <appname>
     For example, if this template is on /Users/rad/Documents/games/corona-game-template,
     running "macruby newgame mygame"
     will create the directory /Users/rad/Documents/games/mygame
