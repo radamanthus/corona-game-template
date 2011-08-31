@@ -49,8 +49,15 @@ function table.filter( t, str )
 end
 
 function table.print( t )
-  for i,v in ipairs(t) do
-    print(i .. " = " .. v)
+  for i,v in pairs(t) do
+    if "table" == type(v) then
+      print(i .. " = [table]: ")
+      print("---")
+      table.print(v)
+      print("---")
+    else
+      print(i .. " = " .. v)
+    end
   end
 end
 
