@@ -2,7 +2,7 @@
 
 module(..., package.seeall)
 
-local json = require "json"
+require "json"
 
 function io.parseJson( filename )
   local file = io.open( filename, "r" )
