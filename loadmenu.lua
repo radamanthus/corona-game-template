@@ -10,7 +10,7 @@ function new()
   local loadingImage
 
   local showLoadingScreen = function()
-    loadingImage = display.newImageRect( "splashScreen.png", 480, 320 )
+    loadingImage = display.newImageRect( "splash_screen.png", 480, 320 )
     loadingImage.x = display.contentWidth
     loadingImage.y = display.contentHeight
     localGroup:insert(loadingImage)
