@@ -10,16 +10,16 @@ Out of the box, this is a working Corona project. It includes a splash screen (l
 - Help
 - About
 
-The images for the buttons are loaded from images/buttons. Note the naming convention: play.png is the button for Play, settings.png for Settings, etc.
+Note the naming convention for button images: play.png is the button for Play, settings.png for Settings, etc.
 
-The code follows my personal convention for project subdirectories:
+The project directory structure follows my personal convention for projects:
 
 appname
   +-- assets
   +-- appname
   +-- doc
 
-- All code is in appname/appname. 
+- All code is in appname/appname.
 - Game assets (e.g. Illustrator .ai files) are in appname/assets, finished PNGs are copied over to appname/appname because that's where Corona SDK expects them to be.
 - The game design document (yes you should have one) and all other documentation are in appname/doc
 
