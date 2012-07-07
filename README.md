@@ -1,9 +1,14 @@
 Corona Game Template version 2.0
 (c) 2011-2012 by Radamanthus Batnag
 
-This is a template project for building games using Corona SDK (http://www.coronalabs.com)
+This is a template project for building games using [Corona SDK](http://www.coronalabs.com)
 
-USAGE
+## Note to previous users
+
+This project has been updated to use the Storyboard API. You can find the old version, which uses Director, in the 1.0 branch.
+
+# Usage
+
 Out of the box, this is a working Corona project. It includes a splash screen (loadmenu.lua, displays images/splash_screen.png for 1 second) and the following menu buttons:
 - Play
 - Settings
@@ -15,6 +20,6 @@ The buttons for Play are btn_play.png and btn_play_over.png; the buttons for Set
 
 If you have Ruby 1.9.3 installed, my Ruby gem [nakor](http://github.com/radamanthus/nakor) provides an easy command-line interface to generating apps from this template.
 
-CREDITS
+# Credits
 
 This code is MIT licensed, see http://developer.coronalabs.com/code/license
