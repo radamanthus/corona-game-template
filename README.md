@@ -1,5 +1,5 @@
 Corona Game Template version 2.0
-(c) 2011-2012 by Radamanthus Batnag
+&copy 2011-2012 by Radamanthus Batnag
 
 This is a template project for building games using [Corona SDK](http://www.coronalabs.com)
 
@@ -9,7 +9,7 @@ This project has been updated to use the Storyboard API. You can find the old ve
 
 # Usage
 
-Out of the box, this is a working Corona project. It includes a splash screen (loadmenu.lua, displays images/splash_screen.png for 1 second) and the following menu buttons:
+Out of the box, this is a working Corona project. It includes a splash screen (loadmenu.lua) which displays images/splash_screen.png for 1 second and then displays the main menu (menu.lua) with the following buttons:
 - Play
 - Settings
 - Help
