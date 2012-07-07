@@ -1,6 +1,3 @@
-Corona Game Template version 2.0
-&copy 2011-2012 by Radamanthus Batnag
-
 This is a template project for building games using [Corona SDK](http://www.coronalabs.com)
 
 ## Note to previous users
