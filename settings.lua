@@ -1,34 +1,48 @@
-module(..., package.seeall)
+local storyboard = require( "storyboard" )
+local scene = storyboard.newScene()
 
--- Main function - MUST return a display.newGroup()
-function new()
-  local localGroup = display.newGroup()
+local ui = require "ui"
+local radlib = require "radlib"
 
-  -- Background
-  local background = display.newImageRect("bk_default.png", 480, 320)
-  background.x = display.contentCenterX
-  background.y = display.contentCenterY
-  localGroup:insert(background)
+---------------------------------------------------------------------------------
+-- BEGINNING OF YOUR IMPLEMENTATION
+---------------------------------------------------------------------------------
+function scene:createScene( event )
+  local screenGroup = self.view
 
-  -- Title
-  local title = display.newText("Touch to go back", 0, 0, native.systemFontBold, 16)
-  title:setTextColor( 255,255,255)
-  title.x = display.contentCenterX
-  title.y = display.contentCenterY
-  title.name = "title"
-  localGroup:insert(title)
-
-  -- Touch to go back
-  local function touched ( event )
-    if ("ended" == event.phase) then
-      director:changeScene("menu","fade")
-    end
-  end
-  background:addEventListener("touch",touched)
-
-  unloadMe = function()
-  end
-
-  -- MUST return a display.newGroup()
-  return localGroup
 end
+
+function scene:enterScene( event )
+  print("Settings loaded...")
+
+  storyboard.removeAll()
+end
+
+function scene:exitScene( event )
+end
+
+function scene:destroyScene( event )
+end
+
+---------------------------------------------------------------------------------
+-- END OF YOUR IMPLEMENTATION
+---------------------------------------------------------------------------------
+--
+-- "createScene" event is dispatched if scene's view does not exist
+scene:addEventListener( "createScene", scene )
+
+-- "enterScene" event is dispatched whenever scene transition has finished
+scene:addEventListener( "enterScene", scene )
+
+-- "exitScene" event is dispatched before next scene's transition begins
+scene:addEventListener( "exitScene", scene )
+
+-- "destroyScene" event is dispatched before view is unloaded, which can be
+-- automatically unloaded in low memory situations, or explicitly via a call to
+-- storyboard.purgeScene() or storyboard.removeScene().
+scene:addEventListener( "destroyScene", scene )
+---------------------------------------------------------------------------------
+
+return scene
+
+

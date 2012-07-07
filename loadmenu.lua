@@ -1,33 +1,62 @@
-module(..., package.seeall)
+local storyboard = require( "storyboard" )
+local scene = storyboard.newScene()
 
-require "init_buttons"
+---------------------------------------------------------------------------------
+-- BEGINNING OF YOUR IMPLEMENTATION
+---------------------------------------------------------------------------------
+function initializeGame()
+  require 'init_buttons'
 
--- Main function - MUST return a display.newGroup()
-function new()
-  local localGroup = display.newGroup()
-
-  local theTimer
-  local loadingImage
-
-  local showLoadingScreen = function()
-    loadingImage = display.newImageRect( "splash_screen.png", 480, 320 )
-    loadingImage.x = display.contentWidth
-    loadingImage.y = display.contentHeight
-    localGroup:insert(loadingImage)
-
-    local goToLevel = function()
-      director:changeScene( "menu" )
-    end
-
-    math.randomseed( os.time() )
-    theTimer = timer.performWithDelay( 1000, goToLevel, 1 )
-  end
-
-  showLoadingScreen()
-
-  unloadMe = function()
-  end
-
-  -- MUST return a display.newGroup()
-  return localGroup
+  math.randomseed( os.time() )
 end
+
+function scene:createScene( event )
+  local screenGroup = self.view
+
+  local loadingImage = display.newImageRect( "splash_screen.png", 480, 320 )
+  loadingImage.x = display.contentWidth/2
+  loadingImage.y = display.contentHeight/2
+  screenGroup:insert(loadingImage)
+
+  local gotoMainMenu = function()
+    storyboard.gotoScene( "menu" )
+  end
+
+  initializeGame()
+
+  local loadMenuTimer = timer.performWithDelay( 1000, gotoMainMenu, 1 )
+end
+
+function scene:enterScene( event )
+  print("Loading screen loaded...")
+
+  storyboard.removeAll()
+end
+
+function scene:exitScene( event )
+end
+
+function scene:destroyScene( event )
+end
+
+---------------------------------------------------------------------------------
+-- END OF YOUR IMPLEMENTATION
+---------------------------------------------------------------------------------
+--
+-- "createScene" event is dispatched if scene's view does not exist
+scene:addEventListener( "createScene", scene )
+
+-- "enterScene" event is dispatched whenever scene transition has finished
+scene:addEventListener( "enterScene", scene )
+
+-- "exitScene" event is dispatched before next scene's transition begins
+scene:addEventListener( "exitScene", scene )
+
+-- "destroyScene" event is dispatched before view is unloaded, which can be
+-- automatically unloaded in low memory situations, or explicitly via a call to
+-- storyboard.purgeScene() or storyboard.removeScene().
+scene:addEventListener( "destroyScene", scene )
+---------------------------------------------------------------------------------
+
+return scene
+

@@ -1,12 +1,8 @@
 display.setStatusBar( display.HiddenStatusBar )
 
-local director = require("director")
-local mainGroup = display.newGroup()
+-- require controller module
+local storyboard = require "storyboard"
+local widget = require "widget"
 
-local function main()
-  mainGroup:insert(director.directorView)
-  director:changeScene("loadmenu")
-  return true
-end
-
-main()
+-- load first screen
+storyboard.gotoScene( "loadmenu" )
