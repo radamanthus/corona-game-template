@@ -13,7 +13,7 @@ end
 function scene:createScene( event )
   local screenGroup = self.view
 
-  local loadingImage = display.newImageRect( "splash_screen.png", 480, 320 )
+  local loadingImage = display.newImageRect( "images/splash_screen.png", 480, 320 )
   loadingImage.x = display.contentWidth/2
   loadingImage.y = display.contentHeight/2
   screenGroup:insert(loadingImage)

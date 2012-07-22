@@ -1,8 +1,8 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 
-local ui = require "ui"
-local radlib = require "radlib"
+local ui = require "scripts.lib.ui"
+local radlib = require "scripts.lib.radlib"
 
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
