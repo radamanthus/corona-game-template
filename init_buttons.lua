@@ -37,7 +37,7 @@ _G.buttons = {
     font = "Helvetica",
     textColor = { 255, 255, 255, 255 },
     emboss = false
-  }
+  },
   settings = {
     defaultSrc = "images/btn_settings.png",
     defaultX = 160,
