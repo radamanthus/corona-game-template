@@ -3,7 +3,7 @@ local ltn12 = require("ltn12")
 
 local M = {}
 
-require "json"
+local json = require "json"
 local parseJson = function( filename )
   local file = io.open( filename, "r" )
   if file then
