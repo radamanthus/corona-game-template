@@ -156,7 +156,11 @@ M.updateRow = updateRow
 -- otherwise do an insert
 ------------------------------------------------------------------------------
 local createOrUpdate = function( tableName, recordData )
-  local existingRecord = M.selectOne( tableName, 'id', recordData.id )
+  local existingRecord = nil
+  if recordData.id ~= nil then
+    existingRecord = M.selectOne( tableName, 'id', recordData.id )
+  end
+
   if existingRecord == nil then
     M.insertRow( tableName, recordData )
   else

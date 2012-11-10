@@ -79,12 +79,15 @@ end
 ------------------------------------------------------------------------------
 -- Returns all rows in the table that match the given filter
 ------------------------------------------------------------------------------
-function ActiveRecord.static:findAll( filter, orderBy )
+function ActiveRecord.static:findAll( klass, params )
   local result = nil
-  if filter == nil then
-    result = orm.selectAll( self.tableName, {order = orderBy} )
+  if params == nil then
+    params = {}
+  end
+  if params.where == nil then
+    result = orm.selectAll( klass.tableName, params )
   else
-    result = orm.selectWhere( self.tableName, {where = filter, order = orderBy} )
+    result = orm.selectWhere( klass.tableName, params )
   end
   return result
 end
@@ -92,11 +95,11 @@ end
 ------------------------------------------------------------------------------
 -- Updates all rows in the table that match the given filter
 ------------------------------------------------------------------------------
-function ActiveRecord.static:updateAll( updateSql, filter )
+function ActiveRecord.static:updateAll( klass, updateSql, filter )
   if filter == nil then
-    orm.updateAll( self.tableName, updateSql )
+    orm.updateAll( klass.tableName, updateSql )
   else
-    orm.updateWhere( self.tableName, updateSql, filter )
+    orm.updateWhere( klass.tableName, updateSql, filter )
   end
 end
 
@@ -114,8 +117,10 @@ end
 ------------------------------------------------------------------------------
 function ActiveRecord:reload()
   local updatedRecord = orm.selectOne( self.class.tableName, 'id', self.id )
-  for k,v in pairs(updatedRecord) do
-    self[k] = v
+  if updatedRecord ~= nil then
+    for k,v in pairs(updatedRecord) do
+      self[k] = v
+    end
   end
 end
 
@@ -144,7 +149,14 @@ end
 -- Updates an array of columns
 ------------------------------------------------------------------------------
 function ActiveRecord:updateAttributes( updateTable )
-  print("IMPLEMENTATION PENDING...")
+  local filter = "id = " .. self.id
+  local columns = {}
+  local columnValues = {}
+  for k,v in pairs(updateTable) do
+    table.insert( columns, k )
+    table.insert( columnValues, v )
+  end
+  orm.updateAttributes( self.class.tableName, filter, columns, columnValues )
 end
 
 ------------------------------------------------------------------------------

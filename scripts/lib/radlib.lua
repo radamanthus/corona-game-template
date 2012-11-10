@@ -2,19 +2,19 @@
 
 local M = {}
 
-local geometry = require "scripts.lib.geometry"
+local geometry = require "geometry"
 M.geometry = geometry
 
-local ioExt = require "scripts.lib.io_ext"
+local ioExt = require "io_ext"
 M.io = ioExt
 
-local stringExt = require "scripts.lib.string_ext"
+local stringExt = require "string_ext"
 M.string = stringExt
 
-local tableExt = require "scripts.lib.table_ext"
+local tableExt = require "table_ext"
 M.table = tableExt
 
-local timeExt = require "scripts.lib.time_ext"
+local timeExt = require "time_ext"
 M.time = timeExt
 
 local debug = function( msg )
