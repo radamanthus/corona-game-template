@@ -7,8 +7,10 @@ local radlib = require "scripts.lib.radlib"
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
+local screen = nil
+
 function scene:createScene( event )
-  local screenGroup = self.view
+  screen = self.view
 
   local playButton = nil
   local function onPlayPressed ( event )
@@ -25,7 +27,7 @@ function scene:createScene( event )
   playButton.x = 160
   playButton.y = 80
   playButton.isActive = true
-  screenGroup:insert(playButton)
+  screen:insert(playButton)
 
   local settingsButton = nil
   local function onSettingsPressed( event )
@@ -42,7 +44,7 @@ function scene:createScene( event )
   settingsButton.x = 160
   settingsButton.y = 130
   settingsButton.isActive = true
-  screenGroup:insert(settingsButton)
+  screen:insert(settingsButton)
 
   local aboutButton = nil
   local function onAboutPressed( event )
@@ -59,7 +61,7 @@ function scene:createScene( event )
   aboutButton.x = 160
   aboutButton.y = 180
   aboutButton.isActive = true
-  screenGroup:insert(aboutButton)
+  screen:insert(aboutButton)
 
   local helpButton = nil
   local function onHelpPressed( event )
@@ -76,7 +78,7 @@ function scene:createScene( event )
   helpButton.x = 160
   helpButton.y = 230
   helpButton.isActive = true
-  screenGroup:insert(helpButton)
+  screen:insert(helpButton)
 end
 
 function scene:enterScene( event )

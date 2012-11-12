@@ -4,6 +4,8 @@ local scene = storyboard.newScene()
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
+local screen = nil
+
 function initializeGame()
   require 'init_buttons'
 
@@ -11,12 +13,12 @@ function initializeGame()
 end
 
 function scene:createScene( event )
-  local screenGroup = self.view
+  screen = self.view
 
   local loadingImage = display.newImageRect( "images/splash_screen.png", 480, 320 )
   loadingImage.x = display.contentWidth/2
   loadingImage.y = display.contentHeight/2
-  screenGroup:insert(loadingImage)
+  screen:insert(loadingImage)
 
   local gotoMainMenu = function()
     storyboard.gotoScene( "menu" )

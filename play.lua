@@ -7,8 +7,10 @@ local radlib = require "scripts.lib.radlib"
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
+local screen = nil
+
 function scene:createScene( event )
-  local screenGroup = self.view
+  screen = self.view
 
 end
 
