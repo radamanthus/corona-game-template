@@ -2,25 +2,19 @@
 
 local M = {}
 
-local geometry = require "scripts.lib.geometry"
-M.geometry = geometry
+M.geometry = require "scripts.lib.geometry"
 
-local ioExt = require "scripts.lib.io_ext"
-M.io = ioExt
+M.io = require "scripts.lib.io_ext"
 
-local stringExt = require "scripts.lib.string_ext"
-M.string = stringExt
+M.string = require "scripts.lib.string_ext"
 
-local tableExt = require "scripts.lib.table_ext"
-M.table = tableExt
+M.table = require "scripts.lib.table_ext"
 
-local timeExt = require "scripts.lib.time_ext"
-M.time = timeExt
+M.time = require "scripts.lib.time_ext"
 
-local debug = function( msg )
+M.debug = function( msg )
   native.showAlert("DEBUG", msg, {"OK"})
 end
-M.debug = debug
 
 return M
 
