@@ -1,8 +1,8 @@
 display.setStatusBar( display.HiddenStatusBar )
 
 -- require controller module
-local storyboard = require "storyboard"
+local composer = require "composer"
 local widget = require "widget"
 
 -- load first screen
-storyboard.gotoScene( "loadmenu" )
+composer.gotoScene( "loadmenu" )

@@ -2,8 +2,8 @@ application =
 {
   content =
   {
-    width = 320,
-    height = 480,
+    width = 320 * display.pixelHeight/display.pixelWidth,
+    height = 320,
     scale = "letterbox",
     imageSuffix =
     {
