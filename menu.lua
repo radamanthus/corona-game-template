@@ -1,5 +1,5 @@
-local storyboard = require( "storyboard" )
-local scene = storyboard.newScene()
+local composer = require( "composer" )
+local scene = composer.newScene()
 
 local ui = require "scripts.lib.ui"
 local radlib = require "scripts.lib.radlib"
@@ -9,13 +9,13 @@ local radlib = require "scripts.lib.radlib"
 ---------------------------------------------------------------------------------
 local screen = nil
 
-function scene:createScene( event )
+function scene:create( event )
   screen = self.view
 
   local playButton = nil
   local function onPlayPressed ( event )
     if event.phase == "ended" and playButton.isActive then
-      storyboard.gotoScene( "play" )
+      composer.gotoScene( "play" )
     end
   end
   playButton = ui.newButton(
@@ -24,7 +24,7 @@ function scene:createScene( event )
       { onRelease = onPlayPressed }
     )
   )
-  playButton.x = 160
+  playButton.x = display.contentCenterX
   playButton.y = 80
   playButton.isActive = true
   screen:insert(playButton)
@@ -32,7 +32,7 @@ function scene:createScene( event )
   local settingsButton = nil
   local function onSettingsPressed( event )
     if event.phase == "ended" and settingsButton.isActive then
-      storyboard.gotoScene( "settings" )
+      composer.gotoScene( "settings" )
     end
   end
   settingsButton = ui.newButton(
@@ -41,7 +41,7 @@ function scene:createScene( event )
       { onRelease = onSettingsPressed }
     )
   )
-  settingsButton.x = 160
+  settingsButton.x = display.contentCenterX
   settingsButton.y = 130
   settingsButton.isActive = true
   screen:insert(settingsButton)
@@ -49,7 +49,7 @@ function scene:createScene( event )
   local aboutButton = nil
   local function onAboutPressed( event )
     if event.phase == "ended" and aboutButton.isActive then
-      storyboard.gotoScene( "about" )
+      composer.gotoScene( "about" )
     end
   end
   aboutButton = ui.newButton(
@@ -58,7 +58,7 @@ function scene:createScene( event )
       { onRelease = onAboutPressed }
     )
   )
-  aboutButton.x = 160
+  aboutButton.x = display.contentCenterX
   aboutButton.y = 180
   aboutButton.isActive = true
   screen:insert(aboutButton)
@@ -66,7 +66,7 @@ function scene:createScene( event )
   local helpButton = nil
   local function onHelpPressed( event )
     if event.phase == "ended" and helpButton.isActive then
-      storyboard.gotoScene( "help" )
+      composer.gotoScene( "help" )
     end
   end
   helpButton = ui.newButton(
@@ -75,41 +75,68 @@ function scene:createScene( event )
       { onRelease = onHelpPressed }
     )
   )
-  helpButton.x = 160
+  helpButton.x = display.contentCenterX
   helpButton.y = 230
   helpButton.isActive = true
   screen:insert(helpButton)
 end
 
-function scene:enterScene( event )
-  print("Menu loaded...")
+function scene:show( event )
 
-  storyboard.removeAll()
+  local sceneGroup = self.view
+  local phase = event.phase
+
+  if phase == "will" then
+    -- Called when the scene is still off screen and is about to move on screen
+  elseif phase == "did" then
+    -- Called when the scene is now on screen
+    -- 
+    -- INSERT code here to make the scene come alive
+    -- e.g. start timers, begin animation, play audio, etc.
+    print("Menu loaded...")
+  end	
 end
 
-function scene:exitScene( event )
+function scene:hide( event )
+  local sceneGroup = self.view
+  local phase = event.phase
+
+  if event.phase == "will" then
+    -- Called when the scene is on screen and is about to move off screen
+    --
+    -- INSERT code here to pause the scene
+    -- e.g. stop timers, stop animation, unload sounds, etc.)
+  elseif phase == "did" then
+    -- Called when the scene is now off screen
+  end
 end
 
-function scene:destroyScene( event )
+function scene:destroy( event )
+  local sceneGroup = self.view
+
+-- Called prior to the removal of scene's "view" (sceneGroup)
+-- 
+-- INSERT code here to cleanup the scene
+-- e.g. remove display objects, remove touch listeners, save state, etc.
 end
 
 ---------------------------------------------------------------------------------
 -- END OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
 --
--- "createScene" event is dispatched if scene's view does not exist
-scene:addEventListener( "createScene", scene )
+-- "create" event is dispatched if scene's view does not exist
+scene:addEventListener( "create", scene )
 
--- "enterScene" event is dispatched whenever scene transition has finished
-scene:addEventListener( "enterScene", scene )
+-- "show" event is dispatched whenever scene transition has finished
+scene:addEventListener( "show", scene )
 
--- "exitScene" event is dispatched before next scene's transition begins
-scene:addEventListener( "exitScene", scene )
+-- "hide" event is dispatched before next scene's transition begins
+scene:addEventListener( "hide", scene )
 
--- "destroyScene" event is dispatched before view is unloaded, which can be
+-- "destroy" event is dispatched before view is unloaded, which can be
 -- automatically unloaded in low memory situations, or explicitly via a call to
--- storyboard.purgeScene() or storyboard.removeScene().
-scene:addEventListener( "destroyScene", scene )
+-- composer.purgeScene() or composer.removeScene().
+scene:addEventListener( "destroy", scene )
 ---------------------------------------------------------------------------------
 
 return scene

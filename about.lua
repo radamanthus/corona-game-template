@@ -1,5 +1,5 @@
-local storyboard = require( "storyboard" )
-local scene = storyboard.newScene()
+local composer = require( "composer" )
+local scene = composer.newScene()
 
 local ui = require "scripts.lib.ui"
 local radlib = require "scripts.lib.radlib"
@@ -9,40 +9,69 @@ local radlib = require "scripts.lib.radlib"
 ---------------------------------------------------------------------------------
 local screen = nil
 
-function scene:createScene( event )
+function scene:create( event )
   screen = self.view
 end
 
-function scene:enterScene( event )
-  print("About loaded...")
+function scene:show( event )
+  local sceneGroup = self.view
+  local phase = event.phase
 
-  storyboard.removeAll()
+  if phase == "will" then
+    -- Called when the scene is still off screen and is about to move on screen
+  elseif phase == "did" then
+    -- Called when the scene is now on screen
+    -- 
+    -- INSERT code here to make the scene come alive
+    -- e.g. start timers, begin animation, play audio, etc.
+    print("About loaded...")
+  end
+
+  composer.removeAll()
 end
 
-function scene:exitScene( event )
+function scene:hide( event )
+  local sceneGroup = self.view
+  local phase = event.phase
+
+  if event.phase == "will" then
+    -- Called when the scene is on screen and is about to move off screen
+    --
+    -- INSERT code here to pause the scene
+    -- e.g. stop timers, stop animation, unload sounds, etc.)
+  elseif phase == "did" then
+    -- Called when the scene is now off screen
+  end
 end
 
-function scene:destroyScene( event )
+function scene:destroy( event )
+  local sceneGroup = self.view
+
+-- Called prior to the removal of scene's "view" (sceneGroup)
+-- 
+-- INSERT code here to cleanup the scene
+-- e.g. remove display objects, remove touch listeners, save state, etc.
 end
 
 ---------------------------------------------------------------------------------
 -- END OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
 --
--- "createScene" event is dispatched if scene's view does not exist
-scene:addEventListener( "createScene", scene )
+-- "create" event is dispatched if scene's view does not exist
+scene:addEventListener( "create", scene )
 
--- "enterScene" event is dispatched whenever scene transition has finished
-scene:addEventListener( "enterScene", scene )
+-- "show" event is dispatched whenever scene transition has finished
+scene:addEventListener( "show", scene )
 
--- "exitScene" event is dispatched before next scene's transition begins
-scene:addEventListener( "exitScene", scene )
+-- "hide" event is dispatched before next scene's transition begins
+scene:addEventListener( "hide", scene )
 
--- "destroyScene" event is dispatched before view is unloaded, which can be
+-- "destroy" event is dispatched before view is unloaded, which can be
 -- automatically unloaded in low memory situations, or explicitly via a call to
--- storyboard.purgeScene() or storyboard.removeScene().
-scene:addEventListener( "destroyScene", scene )
+-- composer.purgeScene() or composer.removeScene().
+scene:addEventListener( "destroy", scene )
 ---------------------------------------------------------------------------------
 
 return scene
+
 
